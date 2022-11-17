@@ -1,55 +1,28 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
-    </v-main>
+    <DashboardModule/>
   </v-app>
 </template>
 
 <script>
-
+import DashboardModule from "@/views/DashboardModule.vue";
 export default {
   name: 'App',
-
+  components:{
+    DashboardModule
+  },
   data: () => ({
     //
   }),
 };
 </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+html, body {
+  font-family: 'Inter', sans-serif !important;
+}
+
+#app {
+  font-family: 'Inter', sans-serif !important;
+}
+</style>

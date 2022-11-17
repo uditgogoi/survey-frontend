@@ -4,8 +4,18 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  
-  
+  {
+    path: "/",
+    redirect: '/create',
+  },
+  {
+    path: '/create',
+    component: () => import(/* webpackChunkName: "create" */ '@/views/pages/CreateSurvey.vue')
+  },
+  {
+    path: '/list',
+    component: () => import(/* webpackChunkName: "create" */ '@/views/pages/SurveyList.vue')
+  }
 ]
 
 const router = new VueRouter({
