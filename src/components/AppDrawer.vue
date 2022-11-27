@@ -12,7 +12,7 @@
     <v-list dense nav>
       <v-list-item v-for="item in items" :key="item.title" link  :to="item.link">
         <v-list-item-icon>
-          <v-icon color="secondary">{{ item.icon }}</v-icon>
+          <v-icon color="white">{{ item.icon }}</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
@@ -31,12 +31,12 @@ export default {
         {
           id: "create",
           icon: "mdi-pencil",
-          link:'/create',
+          link:'/dashboard/create',
           title: "Create survey",
         },
         {
           id: "list",
-          link:'/list',
+          link:'/dashboard/list',
           icon: "mdi-format-list-bulleted",
           title: "Survey list",
         },

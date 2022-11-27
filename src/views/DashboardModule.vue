@@ -1,5 +1,6 @@
 <template>
   <div id="dashboard-module">
+    dashbord
     <app-drawer></app-drawer>
     <v-main>
       <v-container
