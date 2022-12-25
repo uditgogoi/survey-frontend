@@ -7,6 +7,7 @@ export default {
 
     login(user) {
         return Api.post("auth/login",user)
-    }
+    },
+    logout() {}
 }
 
