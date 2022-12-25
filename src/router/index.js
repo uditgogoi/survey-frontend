@@ -44,4 +44,19 @@ const router = new VueRouter({
   routes,
 });
 
+router.beforeEach((to,from,next)=> {
+  const accessToken= localStorage.getItem('accessToken')
+  if(to.fullPath !=='/auth'){
+    if (!accessToken) {
+      next('/auth');
+    }
+  }
+  if (to.fullPath === '/auth') {
+    if (accessToken) {
+      next('/dashboard/create');
+    }
+  }
+  next();
+})
+
 export default router;

@@ -1,0 +1,1 @@
+export const SET_LOGIN_DETAILS=(state,data)=> state.SET_LOGIN_DETAILS=data 
