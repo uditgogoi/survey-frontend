@@ -37,9 +37,12 @@ export const getQuestionCode = function(questionType) {
     if (questionType === "SS" || questionType === "Satisfaction Scale") {
       return "Satisfaction Scale";
     }
+    if(questionType === "radio")
+    {
+      return "Radio";
+    }
     if (
       questionType === "OE" ||
-      questionType === "radio" ||
       questionType === "Open Ended"
     ) {
       return "Open Ended";

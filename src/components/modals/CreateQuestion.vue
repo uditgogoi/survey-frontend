@@ -141,7 +141,7 @@
   </div>
 </template>
   <script>
-import { getQuestionCode } from "@/Utils/helper";
+import { getQuestionCode } from "@/utils/helper";
 
 export default {
   data() {

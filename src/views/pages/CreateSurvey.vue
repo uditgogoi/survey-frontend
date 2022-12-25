@@ -77,6 +77,13 @@
         </v-row>
       </div>
     </v-container>
+    <v-container class="mt-5" v-if="questionList.length>0">
+      <v-row>
+        <v-col :offset="8">
+          <v-btn color="success" @click="createSurvey">Create Survey</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
     <CreateQuestion
       v-if="showAddQuestionsModal"
       @on-add-question="onAddQuestion"
@@ -84,7 +91,7 @@
   </div>
 </template>
 <script>
-import { getCategoryType } from "@/Utils/helper";
+import { getCategoryType } from "@/utils/helper";
 export default {
   name: "CreateSurvey",
   components: {
@@ -165,6 +172,9 @@ export default {
     },
     removeQuestion(question) {
       this.questionList= this.questionList.filter(ele=> ele.id!== question.id)
+    },
+    createSurvey() {
+      console.log(this.questionList)
     }
   },
 };
