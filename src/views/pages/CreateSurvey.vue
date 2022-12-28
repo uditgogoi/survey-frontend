@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h4>Create Survey</h4>
     <v-divider class="mt-2"></v-divider>
     <v-container>
       <v-row class="mt-5 pl-5">
@@ -9,13 +8,13 @@
             depressed
             @click="addQuestionButton"
             id="addQuestion"
-            color="secondary"
           >
-            <span class="font-700"> Add question </span>
+            <span class="font-700 text-capitalize"> Add question </span>
           </v-btn>
         </v-col>
       </v-row>
-      <div class="question-list-wrapper mt-5 px-4">
+      <div class="question-list-wrapper pl-5 mt-5" v-if="questionList.length>0">
+        <h4>Survey Questions</h4>
         <v-row
           class="question-list"
           v-for="(question, index) in questionList"
@@ -77,10 +76,18 @@
         </v-row>
       </div>
     </v-container>
+    <v-container v-if="questionList.length>0">
+      <v-row class="mt-5 pl-5">
+        <v-col cols="4">
+          <h4>Survey Title</h4>
+          <v-text-field v-model="surveyTitle" solo flat background-color="inputBackground" dense hide-details></v-text-field>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-container class="mt-5" v-if="questionList.length>0">
       <v-row>
         <v-col :offset="8">
-          <v-btn color="success" @click="createSurvey">Create Survey</v-btn>
+          <v-btn color="success" @click="createSurvey" :loading="loadingBtn">Create Survey</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -92,6 +99,7 @@
 </template>
 <script>
 import { getCategoryType } from "@/utils/helper";
+import surveyService from "@/services/Api/Survey"
 export default {
   name: "CreateSurvey",
   components: {
@@ -106,6 +114,9 @@ export default {
       showAddQuestionsModal: false,
       selectedQuestionList: [],
       questionList: [],
+      surveyTitle:"",
+      pageTitle:"Create Survey",
+      loadingBtn:false,
       questionType: {
         id: "1",
         text: "Multiple options",
@@ -135,7 +146,13 @@ export default {
       ],
     };
   },
+  created(){
+    this.setCurrentPageTitle();
+  },
   methods: {
+    setCurrentPageTitle() {
+      this.$store.dispatch("CURRENT_PAGE_TITLE",this.pageTitle)
+    },
     onSelectQuestionType(e) {
       this.selectedQuestionType = e;
     },
@@ -173,8 +190,29 @@ export default {
     removeQuestion(question) {
       this.questionList= this.questionList.filter(ele=> ele.id!== question.id)
     },
-    createSurvey() {
-      console.log(this.questionList)
+    async createSurvey() {
+      this.loadingBtn=true;
+      if(!this.surveyTitle) {
+        return;
+      }
+      try{
+        const payload={
+          questions:this.questionList,
+          title: this.surveyTitle
+        }
+        const result= await surveyService.saveSurveyDetails(payload);
+        if(result.data.status) {
+          this.refreshFields();
+        }
+      } catch(e){
+        console.log(e.message)
+      }finally{
+        this.loadingBtn=false;
+      }
+    },
+    refreshFields() {
+      this.surveyTitle=false;
+      this.questionList=[]
     }
   },
 };
@@ -192,8 +230,6 @@ export default {
 }
 .question-list-wrapper {
   width: 85%;
-  margin: auto;
-  min-height: 50vh;
 }
 .expansion-panel {
 }

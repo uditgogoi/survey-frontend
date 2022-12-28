@@ -7,7 +7,15 @@ export default {
     login(user) {
         return Api.post("auth/login",user)
     },
-    logout() {}
+    logout() {
+        const token= localStorage.getItem('accessToken');
+        return Api.get("auth/signout", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+      },
+    
 }
 
 
