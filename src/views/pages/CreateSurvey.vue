@@ -182,7 +182,6 @@ export default {
         type: newQuestion.questionType,
         options: newQuestion.options,
       });
-      console.log(this.selectedQuestionList);
     },
     getType(category) {
       return getCategoryType(category);

@@ -74,6 +74,23 @@ export const GET_ALL_SURVEYS=({commit})=> {
   });
 };
 
+export const GET_SURVEY_DETAILS = ({commit},payload)=> {
+  return new Promise((resolve, reject)=> {
+    SurveyService.getSurveyDetails(payload).then(
+      (response)=> {
+        if(!response.data.status) {
+          reject(response.data.message);
+          return;
+        }
+        const data= response.data.data;
+        commit("SET_SURVEY_DETAILS",data);
+        resolve(data);
+      },
+      (error)=> reject(error)
+    )
+  })
+}
+
 export const CURRENT_PAGE_TITLE=({commit},pageTitle)=> {
   commit("SET_CURRENT_PAGE_TITLE", pageTitle);
 }
