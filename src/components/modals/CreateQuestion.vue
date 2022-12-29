@@ -241,7 +241,6 @@ export default {
         title: this.question,
         required: true,
       };
-
       if (this.questionType === "Multiple Choice") {
         question.options = this.questionOptions.map((val) => {
           return {
@@ -259,6 +258,7 @@ export default {
           };
         });
       }
+      console.log(question)
       this.$emit("on-add-question", question);
     },
   },

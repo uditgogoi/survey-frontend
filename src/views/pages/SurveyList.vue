@@ -33,8 +33,7 @@
               ></v-progress-circular>
             </div>
             <div class="survey-details-content" v-else>
-              <h3 class="py-2 text-capitalize">{{ surveyDetails.title }}</h3>
-              <v-divider class="mb-5"></v-divider>
+              <h3 class="py-2 text-capitalize mb-5">{{ surveyDetails.title }}</h3>
               <div
                 class="survey-questions mt-3 pa-2"
                 v-for="question in surveyDetails.questions"
