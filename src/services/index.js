@@ -6,4 +6,13 @@ const Api = axios.create({
   },
 });
 
+// Api.interceptors.response.use((response)=>{
+//   return response;
+// },(err)=> {
+//   if(err.response.data.message==='jwt expired') {
+//     localStorage.clear();
+//     window.location.reload();
+//   }
+// })
+
 export default Api;

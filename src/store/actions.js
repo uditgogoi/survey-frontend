@@ -12,11 +12,10 @@ export const LOGIN = ({ dispatch }, user) => {
           localStorage.setItem('accessToken',JSON.stringify(data.accessToken))
           resolve(data);
         }
-        reject(response.data.message)
-       
+        reject(response.data)
       },
       (error) => {
-        reject(error);
+        reject(error.response.data);
       }
     );
   });
@@ -35,11 +34,11 @@ export const LOGOUT = () => {
           localStorage.clear();
           resolve(response.data.data);
         } else {
-          reject(response.data.message)
+          reject(response.data)
         }
       },
       (error) => {
-        reject(error);
+        reject(error.response.data);
       }
     );
   });
@@ -53,7 +52,7 @@ export const SIGNUP = (user) => {
         resolve(data);
       },
       (error) => {
-        reject(error);
+        reject(error.response.data);
       }
     );
   });
@@ -68,7 +67,7 @@ export const GET_ALL_SURVEYS=({commit})=> {
         resolve(data);
       },
       (error) => {
-        reject(error);
+        reject(error.response.data);
       }
     );
   });
@@ -86,7 +85,7 @@ export const GET_SURVEY_DETAILS = ({commit},payload)=> {
         commit("SET_SURVEY_DETAILS",data);
         resolve(data);
       },
-      (error)=> reject(error)
+      (error)=> reject(error.response.data)
     )
   })
 }

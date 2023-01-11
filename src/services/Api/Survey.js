@@ -1,17 +1,18 @@
 import Api from "@/services";
-const token= localStorage.getItem('accessToken');
 
 export default {
   getAllSurvey() {
+    const token= localStorage.getItem('accessToken');
     return Api.post("app/survey/list", {accessToken:token});
   },
 
   saveSurveyDetails(payload) {
+    const token= localStorage.getItem('accessToken');
     return Api.post("app/survey/add",{...payload,accessToken:token});
   },
 
   getSurveyDetails(payload) {
-    console.log(payload)
+    const token= localStorage.getItem('accessToken');
     return Api.post("app/survey/list/id",{...payload, accessToken:token})
   }
 };

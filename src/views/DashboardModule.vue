@@ -30,8 +30,14 @@ export default {
     }
     user= JSON.parse(user);
     this.$store.dispatch('SET_LOGIN_DETAILS',user);
+    this.getAllSurveyList();
     // commit("SET_LOGIN_DETAILS", data);
 
+  },
+  methods:{
+    getAllSurveyList() {
+      this.$store.dispatch("GET_ALL_SURVEYS");
+    },
   }
 };
 </script>

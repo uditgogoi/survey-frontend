@@ -79,7 +79,6 @@ export default {
     };
   },
   created() {
-    this.getAllSurveyList();
     this.setCurrentPageTitle();
   },
   computed: {
@@ -100,9 +99,6 @@ export default {
   methods: {
     setCurrentPageTitle() {
       this.$store.dispatch("CURRENT_PAGE_TITLE", this.pageTitle);
-    },
-    getAllSurveyList() {
-      this.$store.dispatch("GET_ALL_SURVEYS");
     },
     setDefaultSelectedSurvey() {
       const defaultSurveyId = this.surveyList[0]?._id;

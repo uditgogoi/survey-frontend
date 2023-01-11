@@ -240,6 +240,7 @@ export default {
         const result = await surveyService.saveSurveyDetails(payload);
         if (result.data.status) {
           this.refreshFields();
+          this.getAllSurveyList();
           this.showNotification({message:"Successfully created", type:'success'})
         }
       } catch (e) {
@@ -251,6 +252,9 @@ export default {
     refreshFields() {
       this.surveyTitle = false;
       this.questionList = [];
+    },
+    getAllSurveyList() {
+      this.$store.dispatch("GET_ALL_SURVEYS");
     },
     showNotification(notification) {
       this.$toast.open({
