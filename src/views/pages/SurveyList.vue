@@ -80,6 +80,7 @@ export default {
   },
   created() {
     this.setCurrentPageTitle();
+    this.setDefaultSelectedSurvey();
   },
   computed: {
     surveyList() {
@@ -87,13 +88,6 @@ export default {
     },
     surveyDetails() {
       return this.$store.getters.SURVEY_DETAILS;
-    },
-  },
-  watch: {
-    surveyList: function (value) {
-      if (value.length > 0) {
-        this.setDefaultSelectedSurvey();
-      }
     },
   },
   methods: {
