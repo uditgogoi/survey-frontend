@@ -237,7 +237,7 @@ export default {
 
     constructQuestion() {
       const question = {
-        questionType: this.convertToRadio? 'radio':getQuestionCode(this.questionType),
+        type: this.convertToRadio? 'radio':getQuestionCode(this.questionType),
         title: this.question,
         required: true,
       };

@@ -26,7 +26,9 @@
             flat
             dense
             background-color="inputBackground"
+            type="password"
             v-model="password"
+            @keyup.enter="onKeyPressEnterPassword()"
           ></v-text-field>
         </div>
         <div class="field mt-2" v-if="toggle === 1">
@@ -69,6 +71,11 @@ export default {
     };
   },
   methods: {
+    onKeyPressEnterPassword() {
+      if(this.toggle)
+        return;
+      this.login();
+    },
     login() {
       if (!this.email || !this.password) {
         return;
