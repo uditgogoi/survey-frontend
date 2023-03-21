@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="links d-flex justify-end pa-3 ml-5 mt-5">
+      <v-btn color="primary" text @click="$router.push({path:'/documentation'})">
+        <v-icon small class="blue white--text">mdi-clipboard-text</v-icon>
+        <span class="pl-1 text-capitalize">Documentation</span>
+      </v-btn>
+    </div>
     <div class="login-wrapper px-10 py-5">
       <h2>
         <v-btn-toggle v-model="toggle" mandatory group>
@@ -72,8 +78,7 @@ export default {
   },
   methods: {
     onKeyPressEnterPassword() {
-      if(this.toggle)
-        return;
+      if (this.toggle) return;
       this.login();
     },
     login() {

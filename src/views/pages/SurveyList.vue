@@ -12,7 +12,7 @@
                   @click="onSelectSurvey(item._id)"
                 >
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                    <v-list-item-title>{{item.title}}</v-list-item-title>
                   </v-list-item-content>
                   <v-list-item-icon>
                     <v-btn fab text x-small depressed>
@@ -33,7 +33,8 @@
               ></v-progress-circular>
             </div>
             <div class="survey-details-content" v-else>
-              <h3 class="py-2 text-capitalize mb-5">{{ surveyDetails.title }}</h3>
+              <h3 class="py-2 text-capitalize pb-0">{{ surveyDetails.title }}</h3>
+              <p class="mb-5 pa-0 grey--text">Survey ID: {{surveyDetails._id}}</p>
               <div
                 class="survey-questions mt-3 pa-2"
                 v-for="question in surveyDetails.questions"
@@ -51,7 +52,7 @@
                       class="mt-5"
                     >
                       <v-chip color="primary" outlined label class="ml-4">
-                        <span class="font-700">{{ option.value }}</span>
+                        <span class="font-700 text-capitalize">{{ option.value }}</span>
                         <v-icon right small> mdi-tag </v-icon>
                       </v-chip>
                     </v-flex>

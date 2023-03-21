@@ -9,18 +9,27 @@
         <v-col cols="3" class="text-right">
           <v-menu transition="slide-y-transition" bottom offset-y>
             <template v-slot:activator="{ on }">
-              <v-avatar color="primary lighten-2 cursor-selector" size="42" v-on="on">
+              <v-avatar
+                color="primary lighten-2 cursor-selector"
+                size="42"
+                v-on="on"
+              >
                 <span class="white--text subtitle-1">
                   <v-icon color="white">mdi-account</v-icon>
                 </span>
               </v-avatar>
             </template>
             <v-list>
-              <v-list-item> User: {{ userDetails.email }} </v-list-item>
+              <v-list-item two-line>
+                <v-list-item-content>
+                  <v-list-item-title
+                    >Username: {{ userDetails.email }}</v-list-item-title
+                  >
+                  <v-list-item-subtitle>User ID: {{userDetails.userId}}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
               <div v-for="(item, index) in headerMenuList" :key="index">
-                <v-list-item
-                  @click="onSelectMenuItem(item)"
-                >
+                <v-list-item @click="onSelectMenuItem(item)">
                   <v-list-item-title>
                     <div class="d-flex align-center">
                       <v-icon
@@ -56,31 +65,31 @@ export default {
       return this.$store.getters.CURRENT_PAGE_TITLE;
     },
     userDetails() {
-      return this.$store.getters.USER_DETAILS
-    }
+      return this.$store.getters.USER_DETAILS;
+    },
   },
   created() {
     this.headerMenuList = navHeaderList;
   },
-  methods:{
+  methods: {
     onSelectMenuItem(option) {
-        if(option.id=='logout') {
-            this.logout();
-        }
+      if (option.id == "logout") {
+        this.logout();
+      }
     },
     logout() {
-        // this.$router.push({path:'/auth'});
-        window.location.reload();
-        this.destroyToken();
+      // this.$router.push({path:'/auth'});
+      window.location.reload();
+      this.destroyToken();
     },
     destroyToken() {
       localStorage.clear();
     },
-  }
+  },
 };
 </script>
 <style>
 .cursor-selector {
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>

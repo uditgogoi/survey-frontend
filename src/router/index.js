@@ -9,6 +9,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "auth" */ "@/views/Login"),
   },
   {
+    path: "/documentation",
+    component: () => import(/* webpackChunkName: "auth" */ "@/views/DocumentationModule"),
+  },
+  {
     path:'/',
     redirect:'/dashboard'
   },
@@ -46,7 +50,7 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=> {
   const accessToken= localStorage.getItem('accessToken')
-  if(to.fullPath !=='/auth'){
+  if(to.fullPath !=='/auth' && to.fullPath !=='/documentation'){
     if (!accessToken) {
       next('/auth');
     }
