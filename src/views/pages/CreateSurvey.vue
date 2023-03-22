@@ -228,10 +228,11 @@ export default {
       );
     },
     async createSurvey() {
-      this.loadingBtn = true;
       if (!this.surveyTitle) {
+        this.showNotification({message:"Survey title can't be empty", type:'error'})
         return;
       }
+      this.loadingBtn = true;
       try {
         const payload = {
           questions: this.questionList,
