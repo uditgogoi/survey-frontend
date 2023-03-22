@@ -55,13 +55,13 @@
         <div class="mt-2 pl-5">
           <p class="font-weight-regular blue--text">CSS</p>
           <code
-            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.css?alt=media&token=d758a3e4-ec75-46b2-a06c-b96122ff8403</code
+            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.css?alt=media&token=5e1fb622-3a11-42cf-ae4e-77f66f3cfd01</code
           >
         </div>
         <div class="mt-5 pl-5">
           <p class="font-weight-regular blue--text">JS</p>
           <code
-            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=cd180544-8c8f-465d-84fa-f71baf1fe2f1</code
+            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=9b69e0b3-458c-4300-aaef-c980d0892e77</code
           >
         </div>
       </section>
