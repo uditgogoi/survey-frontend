@@ -2,7 +2,7 @@
 node_modules
 /dist
 /public
-/.firerbase
+/.firebase
 /.github
 .firebaseerc
 
