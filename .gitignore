@@ -2,9 +2,9 @@
 node_modules
 /dist
 /public
-.firerbase
-.github
-
+/.firerbase
+/.github
+.firebaseerc
 
 # local env files
 .env
