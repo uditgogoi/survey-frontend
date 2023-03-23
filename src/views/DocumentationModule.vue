@@ -3,6 +3,9 @@
     <h2 class="pb-3 blue--text text-center">Documentation</h2>
     <v-divider></v-divider>
     <div class="mt-5 pa-5 content">
+      <p>
+        Make your reviews, surveys and feedback forms easier to integrate in your website much faster and without wasting space.
+      </p>
       <h3>
         Widget in action
       </h3>
@@ -61,13 +64,17 @@
         <div class="mt-2 pl-5">
           <p class="font-weight-regular blue--text">CSS</p>
           <code
-            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.css?alt=media&token=5e1fb622-3a11-42cf-ae4e-77f66f3cfd01</code
+            > 
+              &lt;link href="https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.css?alt=media&token=5e1fb622-3a11-42cf-ae4e-77f66f3cfd01" rel="stylesheet"&gt;
+            </code
           >
         </div>
         <div class="mt-5 pl-5">
           <p class="font-weight-regular blue--text">JS</p>
           <code
-            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=843bfd32-079a-447f-97cb-08bf2c462cd3</code
+            >
+            &lt;script defer src="https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=843bfd32-079a-447f-97cb-08bf2c462cd3"&gt;&lt;/script&gt;
+            </code
           >
         </div>
       </section>
