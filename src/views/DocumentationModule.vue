@@ -3,6 +3,12 @@
     <h2 class="pb-3 blue--text text-center">Documentation</h2>
     <v-divider></v-divider>
     <div class="mt-5 pa-5 content">
+      <h3>
+        Widget in action
+      </h3>
+      <section>
+        <img src="../assets/working.gif">
+      </section>
       <h3>Survey creation</h3>
       <section>
         <h4 class="font-weight-regular">
@@ -61,7 +67,7 @@
         <div class="mt-5 pl-5">
           <p class="font-weight-regular blue--text">JS</p>
           <code
-            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=9b69e0b3-458c-4300-aaef-c980d0892e77</code
+            >https://firebasestorage.googleapis.com/v0/b/survey-sdk.appspot.com/o/survey%2Fapp.js?alt=media&token=843bfd32-079a-447f-97cb-08bf2c462cd3</code
           >
         </div>
       </section>
