@@ -97,7 +97,7 @@ export default {
           this.$router.push({ path: "/dashboard" });
         })
         .catch((e) => {
-          this.showNotification({ message: e.message, type: "error" });
+          this.showNotification({ message: e.message || 'Unknown error', type: "error" });
           this.displayLoginLoading = false;
         });
     },

@@ -5,14 +5,16 @@ export const LOGIN = ({ dispatch }, user) => {
   return new Promise((resolve, reject) => {
     AuthService.login(user).then(
       (response) => {
-        if(response.data.status) {
+        if(!response || !response.data || response.data.status==='err' ) {
+          reject('error')
+        } else{
           const data = response.data.data;
           dispatch("SET_LOGIN_DETAILS", data);
           localStorage.setItem('user',JSON.stringify(data))
           localStorage.setItem('accessToken',JSON.stringify(data.accessToken))
           resolve(data);
         }
-        reject(response.data)
+       
       },
       (error) => {
         reject(error.response.data);
