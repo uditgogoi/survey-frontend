@@ -1,21 +1,13 @@
 import Api from "@/services";
 export default {
-    signup(user) {
-        return Api.post("auth/signup", user);
-    },
+  signup(user) {
+    return Api.post("auth/signup", user);
+  },
 
-    login(user) {
-        return Api.post("auth/login",user)
-    },
-    logout() {
-        const token= localStorage.getItem('accessToken');
-        return Api.get("auth/signout", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-      },
-    
+  login(user) {
+    return Api.post("auth/login", user)
+  }
+
 }
 
 

@@ -6,13 +6,9 @@
           <div class="survey-list">
             <v-list dense>
               <v-list-item-group v-model="selectedSurvey" color="primary">
-                <v-list-item
-                  v-for="item in surveyList"
-                  :key="item._id"
-                  @click="onSelectSurvey(item._id)"
-                >
+                <v-list-item v-for="item in surveyList" :key="item._id" @click="onSelectSurvey(item.id)">
                   <v-list-item-content>
-                    <v-list-item-title>{{item.title}}</v-list-item-title>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
                   </v-list-item-content>
                   <v-list-item-icon>
                     <v-btn fab text x-small depressed>
@@ -27,30 +23,18 @@
         <v-col cols="8" class="pa-5">
           <div class="survey-details pa-5">
             <div v-if="surveyDetailsLoading" class="survey-details-loading">
-              <v-progress-circular
-                indeterminate
-                color="primary"
-              ></v-progress-circular>
+              <v-progress-circular indeterminate color="primary"></v-progress-circular>
             </div>
             <div class="survey-details-content" v-else>
               <h3 class="py-2 text-capitalize pb-0">{{ surveyDetails.title }}</h3>
-              <p class="mb-5 pa-0 grey--text">Survey ID: {{surveyDetails._id}}</p>
-              <div
-                class="survey-questions mt-3 pa-2"
-                v-for="question in surveyDetails.questions"
-                :key="question.id"
-              >
+              <p class="mb-5 pa-0 grey--text">Survey ID: {{ surveyDetails._id }}</p>
+              <div class="survey-questions mt-3 pa-2" v-for="question in surveyDetails.questions" :key="question.id">
                 <p class="question-title pa-2 font-italic">
                   {{ question.title }} ?
                 </p>
                 <div v-if="question.options.length > 0">
                   <v-layout flex-wrap justify-start>
-                    <v-flex
-                      justify-start
-                      v-for="option in question.options"
-                      :key="option.value"
-                      class="mt-5"
-                    >
+                    <v-flex justify-start v-for="option in question.options" :key="option.value" class="mt-5">
                       <v-chip color="primary" outlined label class="ml-4">
                         <span class="font-700 text-capitalize">{{ option.value }}</span>
                         <v-icon right small> mdi-tag </v-icon>
@@ -96,17 +80,20 @@ export default {
       this.$store.dispatch("CURRENT_PAGE_TITLE", this.pageTitle);
     },
     setDefaultSelectedSurvey() {
-      const defaultSurveyId = this.surveyList[0]?._id;
+      const defaultSurveyId = this.surveyList[0]?.id;
       this.onSelectSurvey(defaultSurveyId);
     },
     onSelectSurvey(surveyId) {
-      this.surveyDetailsLoading = true;
-      const payload = {
-        id: surveyId,
-      };
-      this.$store
-        .dispatch("GET_SURVEY_DETAILS", payload)
-        .then(() => (this.surveyDetailsLoading = false));
+      console.log("surveyId: ", surveyId);
+      if (surveyId) {
+        this.surveyDetailsLoading = true;
+        const payload = {
+          id: surveyId,
+        };
+        this.$store
+          .dispatch("GET_SURVEY_DETAILS", payload)
+          .then(() => (this.surveyDetailsLoading = false));
+      }
     },
   },
 };
@@ -118,17 +105,20 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .loading-icon {
   height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .survey-details {
   min-height: 50vh;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+
 .survey-questions {
   border-left: 3px solid #22ba5f;
   background: #eff0f0;

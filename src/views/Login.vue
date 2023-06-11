@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="links d-flex justify-end pa-3 ml-5 mt-5">
-      <v-btn color="primary" text @click="$router.push({path:'/documentation'})">
+      <v-btn color="primary" text @click="$router.push({ path: '/documentation' })">
         <v-icon small class="blue white--text">mdi-clipboard-text</v-icon>
         <span class="pl-1 text-capitalize">Documentation</span>
       </v-btn>
@@ -17,44 +17,19 @@
       <div class="form mt-10">
         <div class="field">
           <label>Email</label>
-          <v-text-field
-            solo
-            flat
-            dense
-            background-color="inputBackground"
-            v-model="email"
-          ></v-text-field>
+          <v-text-field solo flat dense background-color="inputBackground" v-model="email"></v-text-field>
         </div>
         <div class="field mt-2">
           <label>Password</label>
-          <v-text-field
-            solo
-            flat
-            dense
-            background-color="inputBackground"
-            type="password"
-            v-model="password"
-            @keyup.enter="onKeyPressEnterPassword()"
-          ></v-text-field>
+          <v-text-field solo flat dense background-color="inputBackground" type="password" v-model="password"
+            @keyup.enter="onKeyPressEnterPassword()"></v-text-field>
         </div>
         <div class="field mt-2" v-if="toggle === 1">
           <label>Confirm Password</label>
-          <v-text-field
-            solo
-            flat
-            dense
-            background-color="inputBackground"
-            v-model="confirmPassword"
-          ></v-text-field>
+          <v-text-field solo flat dense background-color="inputBackground" v-model="confirmPassword"></v-text-field>
         </div>
         <div class="field mt-2" v-if="toggle === 0">
-          <v-btn
-            class="success"
-            depressed
-            @click="login"
-            :loading="displayLoginLoading"
-            >Login</v-btn
-          >
+          <v-btn class="success" depressed @click="login" :loading="displayLoginLoading">Login</v-btn>
         </div>
         <div class="field mt-2" v-if="toggle === 1">
           <v-btn class="success" depressed @click="signup">Sign up</v-btn>
@@ -102,7 +77,20 @@ export default {
         });
     },
     signup() {
-      this.$store.dispatch("");
+      if (!this.email || !this.password) {
+        return;
+      }
+      const user = {
+        email: this.email,
+        password: this.password,
+      };
+      this.$store.dispatch("SIGNUP", user).then(() => {
+        // this.$router.push({ path: "/dashboard" });
+        this.toggle = 0;
+      })
+        .catch((e) => {
+          this.showNotification({ message: e.message || 'Unknown error', type: "error" });
+        });
     },
     showNotification(notification) {
       this.$toast.open({

@@ -5,6 +5,7 @@ node_modules
 /.firebase
 /.github
 .firebaseerc
+dist.zip
 
 # local env files
 .env

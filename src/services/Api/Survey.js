@@ -2,17 +2,24 @@ import Api from "@/services";
 
 export default {
   getAllSurvey() {
-    const token= localStorage.getItem('accessToken');
-    return Api.post("app/survey/list", {accessToken:token});
+    return Api.get("surveys", this.setAuthorizationHeader());
   },
 
   saveSurveyDetails(payload) {
-    const token= localStorage.getItem('accessToken');
-    return Api.post("app/survey/add",{...payload,accessToken:token});
+    return Api.post("surveys/add", payload, this.setAuthorizationHeader());
   },
 
   getSurveyDetails(payload) {
-    const token= localStorage.getItem('accessToken');
-    return Api.post("app/survey/list/id",{...payload, accessToken:token})
+    return Api.get("surveys/" + payload.id, this.setAuthorizationHeader())
+  },
+
+  setAuthorizationHeader() {
+    const token = localStorage.getItem('accessToken');
+    return {
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    }
   }
 };
